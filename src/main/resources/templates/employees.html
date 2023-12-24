@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<head>
+    <meta charset="utf-8">
+    <title>Employee Projects History</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+    @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+    @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+    body {
+      background: #f5f5f5;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    .navbar {
+      margin-bottom: 30px;
+    }
+
+    .card {
+      border: none;
+      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+      margin-bottom: 30px;
+    }
+
+    .w-60 {
+      width: 60px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    .social-links li a {
+      -webkit-border-radius: 50%;
+      background-color: rgba(89, 206, 181, .85);
+      border-radius: 50%;
+      color: #fff;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      width: 30px;
+      font-size: 12px;
+    }
+
+    a {
+      color: #707070;
+    }
+
+    i {
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+  </style>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href = "@{/}" style="color:white;">Employee Projects History</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href = "@{/employee}">Employees <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href = "@{/employee/add}">Add Employee <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href = "@{/project}">Projects <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href = "@{/project/add}">Add Project <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href = "@{/couples}">Pair of Employees <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" id="main-container">
+    <div class="row">
+        <div th:each = "employee: ${employees}" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5 th:text = "${employee.id}"></h5>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li th:text = "'name: '+ ${employee.name}" class="list-group-item"><i class="fa fa-envelope float-right"></i></li>
+                </ul>
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a th:href="@{/employee/edit/{id}(id=${employee.id})}" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+<!--                        <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>

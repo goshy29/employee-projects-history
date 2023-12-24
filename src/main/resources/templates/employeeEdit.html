@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<head>
+    <meta charset="utf-8">
+    <title>Employee Projects History</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+    @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+    @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+    body {
+      background: #f5f5f5;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    .navbar {
+      margin-bottom: 30px;
+    }
+
+    .card {
+      border: none;
+      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+      margin-bottom: 30px;
+    }
+
+    .w-60 {
+      width: 60px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    .social-links li a {
+      -webkit-border-radius: 50%;
+      background-color: rgba(89, 206, 181, .85);
+      border-radius: 50%;
+      color: #fff;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      width: 30px;
+      font-size: 12px;
+    }
+
+    a {
+      color: #707070;
+    }
+
+    i {
+        color: white;
+    }
+
+    a {
+       color: white;
+    }
+  </style>
+</head>
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 th:text="${employee.id} ? 'Edit Employee' : 'Add Employee'"></h5>
+        </div>
+        <div class="modal-body">
+            <form th:action="${employee.id} ? @{/employee/edit/{id}(id=${employee.id})} : @{/employee/add}" th:object="${employee}" method="post">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" th:field = "*{id}" class="form-control" id="id" placeholder="ID" th:readonly="${id > 0}" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" th:field = "*{name}" class="form-control" id="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <div th:if="${existEmployee}" class="alert alert-danger" role="alert">
+                        Employee with that ID already exist!
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" >Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>
