@@ -33,5 +33,7 @@ together the longest on a given project.
 
 3. In MainController.java file find @GetMapping("/load") and @GetMapping("/couples") annotations
   and replace the path at csvFile with your actuall path to file on your computer.
+4. After starting the program for the first time, to load the csv file press Load CSV from the
+  menu bar. After this step, the program is ready to work.
 
 
