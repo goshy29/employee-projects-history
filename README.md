@@ -7,3 +7,31 @@ The system provides the ability to read and write data from a csv file into a da
 Also display a list of all employees and projects, add new ones and edit existing ones. 
 In the last section of the menu, you will find the pair of employees who have worked 
 together the longest on a given project.
+
+## Instructions
+
+1. Configure the application.properties file with your database name, username and password.
+2. Create tables employees, projects and history in your database (PostgreSQL recommended):
+ 
+CREATE TABLE employees (
+    id INT PRIMARY KEY NOT NULL,
+    name VARCHAR(255) NOT NULL
+); 
+
+CREATE TABLE projects (
+    id INT PRIMARY KEY NOT NULL,
+    name VARCHAR(255) NOT NULL
+); 
+
+CREATE TABLE history (
+    employeeId INT NOT NULL,
+    projectId INT NOT NULL,
+    startDate DATE NOT NULL,
+    endDate DATE NULL,
+    PRIMARY KEY (employeeId, projectId)
+);  
+
+3. In MainController.java file find @GetMapping("/load") and @GetMapping("/couples") annotations
+  and replace the path at csvFile with your actually path to file on your computer.
+
+
