@@ -13,23 +13,23 @@ together the longest on a given project.
 1. Configure the application.properties file with your database name, username and password.
 2. Create tables employees, projects and history in your database (PostgreSQL recommended):
  
-CREATE TABLE employees (
-    id INT PRIMARY KEY NOT NULL,
-    name VARCHAR(255) NOT NULL
-); 
-
-CREATE TABLE projects (
-    id INT PRIMARY KEY NOT NULL,
-    name VARCHAR(255) NOT NULL
-); 
-
-CREATE TABLE history (
-    employeeId INT NOT NULL,
-    projectId INT NOT NULL,
-    startDate DATE NOT NULL,
-    endDate DATE NULL,
-    PRIMARY KEY (employeeId, projectId)
-);  
+    CREATE TABLE employees (
+        id INT PRIMARY KEY NOT NULL,
+        name VARCHAR(255) NOT NULL
+    ); 
+    
+    CREATE TABLE projects (
+        id INT PRIMARY KEY NOT NULL,
+        name VARCHAR(255) NOT NULL
+    ); 
+    
+    CREATE TABLE history (
+        employeeId INT NOT NULL,
+        projectId INT NOT NULL,
+        startDate DATE NOT NULL,
+        endDate DATE NULL,
+        PRIMARY KEY (employeeId, projectId)
+    );  
 
 3. In MainController.java file find @GetMapping("/load") and @GetMapping("/couples") annotations
   and replace the path at csvFile with your actually path to file on your computer.
