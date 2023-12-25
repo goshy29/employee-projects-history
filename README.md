@@ -32,6 +32,6 @@ together the longest on a given project.
     );  
 
 3. In MainController.java file find @GetMapping("/load") and @GetMapping("/couples") annotations
-  and replace the path at csvFile with your actually path to file on your computer.
+  and replace the path at csvFile with your actuall path to file on your computer.
 
 
